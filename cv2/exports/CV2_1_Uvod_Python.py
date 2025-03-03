@@ -26,14 +26,13 @@
 
 print("Hello, World!")
 
-
 # **Úloha na precvičenie:** Napíšte príkaz, ktorý vypíše vaše meno a vek.
 
 # In[ ]:
 
 
 # TODO
-
+print("Andrej, 22")
 
 # ---
 # 
@@ -64,14 +63,16 @@ height = 6.2
 is_student = False
 print(type(name), type(age), type(height), type(is_student))
 
-
 # **Úloha:** Vytvorte a inicializujte premenné `blood_type`, `insurance_code` a `allergic_to_paracetamol` a vypíšte ich dátové typy.
 
 # In[ ]:
 
 
 # TODO
-
+blood_type = "0+"
+insurance_code = 454217
+allergic_to_paracetamol = True
+print(type(blood_type), type(insurance_code), type(allergic_to_paracetamol))
 
 # ---
 # 
@@ -96,7 +97,8 @@ print(x + y, x * y, x > y, x and y)
 print("Is x smaller than y?: ", x < y)
 
 import operator
-compare = operator.ge(x, y) # greater or equal
+
+compare = operator.ge(x, y)  # greater or equal
 print("Is x greater or equal to y?:", compare)
 
 # logical operations
@@ -105,14 +107,16 @@ is_true = is_allergic or 0
 print("Value of is_true:", is_true)
 print("Operator sign comparison: ", is_true & False)
 
-
 # **Úloha:** Vytvorte premenné `a = 20`, `b = 5` a vypočítajte súčet, rozdiel a ich podiel.
 
 # In[ ]:
 
 
 # TODO
-
+a, b = 20, 5
+print(f'Sucet cisiel {a} + {b} = {a+b}')
+print(f'Rozdiel cisiel {a} - {b} = {a-b}')
+print(f'Podiel cisiel {a} / {b} = {a/b}')
 
 # ---
 # 
@@ -133,7 +137,6 @@ elif age == 18:
     print("You have just become an adult.")
 else:
     print("You are an adult.")
-
 
 # **Úloha:** Napíšte kód, ktorý skontroluje, či je číslo párne alebo nepárne a overte ho použitím rôznych čísel. - [Dokumentácia expressions (modulo)](https://docs.python.org/3/reference/expressions.html)
 # 
@@ -189,15 +192,15 @@ for i in range(5):
 
 
 # age is optional
-def greet(name, age = -1):
+def greet(name, age=-1):
     # documentation comment
     """Function to greet a person."""
     print("Name:", name, "\tAge: ", age)
 
+
 # function call
 greet("Alice")
 greet("Benjamin", 22)
-
 
 # **Úloha:** Napíšte funkciu, ktorá vypočíta a vráti druhú mocninu čísla. Použite voliteľný parameter pre zmenu exponentu. - [Dokumentácia functions](https://docs.python.org/3/tutorial/controlflow.html#defining-functions), [Dokumentácia pow](https://docs.python.org/3/library/functions.html#pow)
 
@@ -273,7 +276,6 @@ coordinates = (10, 20)
 print("Coordinates:", coordinates)
 print("Coordinate x:", coordinates[0])
 
-
 # **Úloha:** Vytvorte zoznam `patients` s údajmi o pacientoch (meno, vek, diagnóza). Vypíšte vek pacienta s indexom 2.
 # 
 
@@ -304,13 +306,12 @@ print("Coordinate x:", coordinates[0])
 
 # writing to a file
 with open("data/example.csv", "w+") as file:
-    file.write("patient_id,name,age,diagnosis\n") # writing a header
+    file.write("patient_id,name,age,diagnosis\n")  # writing a header
 
 # reading from a file
 with open('data/example.csv', 'r') as file:
     contents = file.read()
     print("File contents:", contents)
-
 
 # **Úloha:** Otvorte súbor `example.csv`v móde "append" a zapíšte do neho údaje o troch pacientoch. (Údaje vymyslite)
 
@@ -338,7 +339,6 @@ with open('data/example.csv', 'r') as file:
 import my_module
 
 my_module.module_foo()
-
 
 # **Úloha:** Vytvorte vlastný modul a importujte ho do projektu s aliasom.
 
@@ -372,7 +372,6 @@ try:
 except NameError as e:
     print("Error:", e)
 
-
 # **Úloha:** Ošetrite výnimku pri delení čísla nulou.
 
 # In[ ]:
@@ -395,6 +394,7 @@ except NameError as e:
 
 
 from PIL import Image
+
 img = Image.open("../data/microscope.jpg")
 gray_img = img.convert("L")
 gray_img.save("data/microscope_g.jpg")
@@ -448,11 +448,11 @@ class Patient:
         else:
             print("Some of the information is undefined.")
 
+
 p1 = Patient("Anna", 30, "Diabetes")
 p2 = Patient("Peter", 25, None)
 p1.display_info()
 p2.display_info()
-
 
 # **Úloha:** Vytvorte triedu `Doctor` s atribútmi `name`, `specialization` a `patients`. Vytvorte metódu `add_patient`, ktorá pridá pacienta do zoznamu pacientov. - [Dokumentácia classes](https://docs.python.org/3/tutorial/classes.html). Pridajte pacientov p1 a p2 do zoznamu a vypíšte zoznam pacientov.
 
@@ -479,10 +479,9 @@ p2.display_info()
 
 
 # Lambda function to calculate square of a number
-square = lambda x: x**2
+square = lambda x: x ** 2
 
 print("Square of 5 using lambda function:", square(5))
-
 
 # **Úloha:** Vytvorte lambda funkciu s podmienkou (`if-else`), ktorá vráti text `even` alebo `odd`, podľa toho, čí je číslo párne alebo nepárne. Použitie podmienky v lambda funkcii má formu `lambda arguments: true_return_expression if condition else false_return_expression`.
 
@@ -514,7 +513,7 @@ print("Square of 5 using lambda function:", square(5))
 # map function
 numbers = [1, 2, 3, 4, 5]
 
-squared_numbers = list(map(lambda x: x**2, numbers))
+squared_numbers = list(map(lambda x: x ** 2, numbers))
 print("Squared numbers:", squared_numbers)
 
 # filter function
@@ -523,9 +522,9 @@ print("Even numbers:", even_numbers)
 
 # reduce function
 from functools import reduce
+
 product = reduce(lambda x, y: x * y, numbers)
 print("Product of numbers:", product)
-
 
 # **Úloha:** Vytvorte zoznam `ages` s vekmi pacientov. Použite funkciu `filter` a lambda funkciu na vyselektovanie pacientov vo veku 18-65 rokov.
 
@@ -564,7 +563,6 @@ df = pd.DataFrame(data)
 
 # show dataframe
 print(df)
-
 
 # **Úloha:** Vytvorte DataFrame s dátami zo súboru `data/example.csv`. Pre vytvorenie DataFrame priamo z csv súboru použite funkciu read_csv - [Dokumentácia read_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html). Použite funkciu `describe` na zobrazenie štatistík dát - [Dokumentácia describe](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html).
 
