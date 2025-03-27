@@ -8,6 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from typing import Tuple, List, Optional, Callable
 
+
 class Dataset:
     """
     This class handles loading, preprocessing, analyzing, and visualizing the breast cancer dataset.
@@ -38,7 +39,8 @@ class Dataset:
         """
         A generic plotting function to reduce redundancy in plotting methods.
         """
-        general_kwargs = {key: kwargs.pop(key, None) for key in ['title', 'xlabel', 'ylabel', 'xticks_rotation', 'yticks', 'yticklabels', 'xticks']}
+        general_kwargs = {key: kwargs.pop(key, None) for key in
+                          ['title', 'xlabel', 'ylabel', 'xticks_rotation', 'yticks', 'yticklabels', 'xticks']}
         plt.figure(figsize=kwargs.pop('figsize', (10, 6)))
         plot_func(*args, **kwargs)  # Capture the plot object for functions like sns.pairplot
         if general_kwargs['title']:
@@ -56,14 +58,17 @@ class Dataset:
         plt.tight_layout()
         plt.show()
 
-    def split_data(self, test_size: float = 0.2, stratify: bool = True, random_state: int = 42) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    def split_data(self, test_size: float = 0.2, stratify: bool = True, random_state: int = 42) -> Tuple[
+        np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """
         Splits the dataset into training and testing sets.
         """
         stratify_param = self.target if stratify else None
-        return train_test_split(self.data, self.target, test_size=test_size, stratify=stratify_param, random_state=random_state)
+        return train_test_split(self.data, self.target, test_size=test_size, stratify=stratify_param,
+                                random_state=random_state)
 
-    def scale_data(self, X_train: np.ndarray, X_test: np.ndarray, scale_type: str = 'standard') -> Tuple[np.ndarray, np.ndarray]:
+    def scale_data(self, X_train: np.ndarray, X_test: np.ndarray, scale_type: str = 'standard') -> Tuple[
+        np.ndarray, np.ndarray]:
         """
         Scales the training and test datasets using the specified scaling method.
         """
@@ -76,7 +81,8 @@ class Dataset:
             raise ValueError("Invalid scale_type. Choose 'standard' or 'normalize'.")
         return scaler.fit_transform(X_train), scaler.transform(X_test)
 
-    def visualize_feature_distribution(self, feature_index: int, scaled_data: Optional[np.ndarray] = None, title_suffix: str = ""):
+    def visualize_feature_distribution(self, feature_index: int, scaled_data: Optional[np.ndarray] = None,
+                                       title_suffix: str = ""):
         """
         Visualizes the distribution of a specific feature before and after scaling using boxplots.
         """
@@ -87,12 +93,14 @@ class Dataset:
         original_feature = self.data[:, feature_index]
 
         self.__generic_plot(sns.boxplot, data=original_feature, color='blue', width=0.3,
-                            title=f"Boxplot of Feature: {feature_name} {title_suffix}", xlabel=feature_name, ylabel="Value")
+                            title=f"Boxplot of Feature: {feature_name} {title_suffix}", xlabel=feature_name,
+                            ylabel="Value")
 
         if scaled_data is not None:
             scaled_feature = scaled_data[:, feature_index]
             self.__generic_plot(sns.boxplot, data=scaled_feature, color='orange', width=0.3,
-                                title=f"Boxplot of Scaled Feature: {feature_name} {title_suffix}", xlabel=feature_name, ylabel="Value")
+                                title=f"Boxplot of Scaled Feature: {feature_name} {title_suffix}", xlabel=feature_name,
+                                ylabel="Value")
 
     def plot_class_distribution(self):
         """
