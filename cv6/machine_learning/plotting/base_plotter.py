@@ -1,3 +1,5 @@
+import os
+
 from matplotlib import pyplot as plt
 from typing import Callable
 
@@ -18,6 +20,13 @@ class BasePlotter:
         plt.figure(figsize=kwargs.pop('figsize', (10, 6)))
         plot_func(*args, **kwargs)
         self.__apply_plot_labels(general_kwargs)
+
+        if general_kwargs['title']:
+            filename = general_kwargs['title'].lower().replace(" ", "_").replace(":", "") + ".png"
+            output_path = os.path.join("outputs", filename)
+            os.makedirs("outputs", exist_ok=True)
+            plt.savefig(output_path, bbox_inches='tight')
+
         plt.tight_layout()
         plt.show()
 
