@@ -16,6 +16,8 @@ Pridajte do kódu ďalší model strojového učenia (ľubovoľný), a taktiež 
 
 #TODO - Popis
 
+Vsetky ulohy mam popisane v prilozenom word dokumente pod nazvom doc_zadanie2_Farsky_Andrej
+
 ### Úloha 2 (2b)
 
 Implementujte ďalšiu (ľubovoľnú) metriku pre evaluáciu modelov. Nezabudnite na to, aby sa implementovaná metrika ukladala do logov v súbore `model_accuracies.csv` a tiež ju pridajte do grafov (do grafov pre funkciu hustoty rozdelenia a tiež pre ňu vytvorte nový graf ktorý bude zobrazovať jej priebeh počas replikácií - tak ako pre presnosť (accuracy)).  
